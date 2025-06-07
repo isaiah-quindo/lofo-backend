@@ -10,8 +10,8 @@
     "start:dev": "nodemon server.js",
     "start:prod": "NODE_ENV=production nodemon server.js",
     "debug": "ndb server.js",
-    "watch:js": "parcel watch ./public/js/index.js --out-dir ./public/js --public-url /js --out-file bundle.js --no-hmr",
-    "build:js": "parcel build ./public/js/index.js --out-dir ./public/js --public-url /js --out-file bundle.js"
+    "watch:js": "parcel watch ./public/js/index.js --dist-dir ./public/js --public-url /js --no-hmr",
+    "build:js": "parcel build ./public/js/index.js --dist-dir ./public/js --public-url /js"
   },
   "keywords": [
     "Lost and Found"
@@ -31,6 +31,7 @@
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "parcel": "^2.15.2",
     "prettier": "^2.3.2",
     "wrangler": "^4.18.0"
   },
