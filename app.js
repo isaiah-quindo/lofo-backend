@@ -18,8 +18,35 @@ const app = express();
 
 // 1) GLOBAL MIDDLEWARES
 // Implement CORS
-app.use(cors());
-app.options('*', cors());
+app.use(
+  cors({
+    origin:
+      process.env.NODE_ENV === 'production'
+        ? process.env.FRONTEND_URL
+        : 'http://localhost:3000',
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+    allowedHeaders: [
+      'Content-Type',
+      'Authorization',
+      'Accept',
+      'Origin',
+      'X-Requested-With',
+    ],
+  })
+);
+
+// Allow preflight requests
+app.options(
+  '*',
+  cors({
+    origin:
+      process.env.NODE_ENV === 'production'
+        ? process.env.FRONTEND_URL
+        : 'http://localhost:3000',
+    credentials: true,
+  })
+);
 
 // Set security HTTP headers
 app.use(helmet());
