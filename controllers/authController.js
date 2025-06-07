@@ -19,12 +19,10 @@ const createSendToken = (user, statusCode, req, res) => {
       Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
     ),
     httpOnly: true,
-    secure: req.secure || req.headers['x-forwarded-proto'] === 'https',
-    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+    secure: true,
+    sameSite: 'none',
     domain:
-      process.env.NODE_ENV === 'production'
-        ? process.env.COOKIE_DOMAIN
-        : undefined,
+      process.env.NODE_ENV === 'production' ? '.herokuapp.com' : undefined,
   });
 
   user.password = undefined;

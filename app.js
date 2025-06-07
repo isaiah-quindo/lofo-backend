@@ -20,10 +20,7 @@ const app = express();
 // Implement CORS
 app.use(
   cors({
-    origin:
-      process.env.NODE_ENV === 'production'
-        ? process.env.FRONTEND_URL
-        : 'http://localhost:3000',
+    origin: true, // Allow all origins, we'll handle specific ones in production
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
     allowedHeaders: [
