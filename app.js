@@ -11,8 +11,8 @@ const compression = require('compression');
 
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
-const itemRouter = require('./routes/itemRouter');
-const userRouter = require('./routes/userRouter');
+const itemRouter = require('./routes/itemRoutes');
+const userRouter = require('./routes/userRoutes');
 
 const app = express();
 
