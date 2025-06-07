@@ -19,7 +19,7 @@
   "author": "Isaiah",
   "license": "ISC",
   "engines": {
-    "node": "^16"
+    "node": "^22.13.0"
   },
   "devDependencies": {
     "eslint": "^7.31.0",
