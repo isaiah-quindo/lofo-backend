@@ -37,21 +37,22 @@ const createSendToken = (user, statusCode, req, res) => {
 };
 
 exports.signup = catchAsync(async (req, res, next) => {
-  const newUser = await User.create({
-    name: req.body.name,
-    email: req.body.email,
-    password: req.body.password,
-    passwordConfirm: req.body.passwordConfirm,
-    // passwordChangedAt: req.body.passwordChangedAt,
-    // role: req.body.role,
-    // passwordResetToken: req.body.passwordResetToken,
-    // passwordResetExpires: req.body.passwordResetExpires,
-  });
+  try {
+    console.log('Starting signup process...');
 
-  const url = `${req.protocol}://${req.get('host')}/account`;
-  await new Email(newUser, url).sendWelcome();
+    const newUser = await User.create({
+      name: req.body.name,
+      email: req.body.email,
+      password: req.body.password,
+      passwordConfirm: req.body.passwordConfirm,
+    });
+    console.log('User created successfully:', newUser.email);
 
-  createSendToken(newUser, 201, req, res);
+    createSendToken(newUser, 201, req, res);
+  } catch (error) {
+    console.error('Signup error:', error);
+    return next(error);
+  }
 });
 
 exports.login = catchAsync(async (req, res, next) => {
