@@ -19,10 +19,12 @@ const createSendToken = (user, statusCode, req, res) => {
       Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
     ),
     httpOnly: true,
-    secure: process.env.NODE_ENV === 'production',
-    sameSite: 'lax',
+    secure: req.secure || req.headers['x-forwarded-proto'] === 'https',
+    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
     domain:
-      process.env.NODE_ENV === 'production' ? '.yourdomain.com' : 'localhost',
+      process.env.NODE_ENV === 'production'
+        ? process.env.COOKIE_DOMAIN
+        : undefined,
   });
 
   user.password = undefined;

@@ -33,20 +33,15 @@ app.use(
       'Origin',
       'X-Requested-With',
     ],
+    exposedHeaders: ['Set-Cookie'],
   })
 );
 
-// Allow preflight requests
-app.options(
-  '*',
-  cors({
-    origin:
-      process.env.NODE_ENV === 'production'
-        ? process.env.FRONTEND_URL
-        : 'http://localhost:3000',
-    credentials: true,
-  })
-);
+// Enable pre-flight requests for all routes
+app.options('*', cors());
+
+// Trust proxy (important for secure cookies in production)
+app.enable('trust proxy');
 
 // Set security HTTP headers
 app.use(helmet());
