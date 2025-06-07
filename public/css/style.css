@@ -1,0 +1,257 @@
+body {
+  background-color: #eaeef2 !important;
+  font-family: Source Sans Pro !important;
+  min-height: 100vh;
+}
+
+.system-alert {
+  max-width: 500px;
+  margin: 24px auto;
+  position: fixed !important;
+  left: 50%;
+  transform: translate(-50%);
+  z-index: 1;
+}
+
+nav.main-navbar {
+  background: transparent
+    linear-gradient(270deg, #de1b37 0%, #602581 28%, #3650bf 100%) 0% 0%
+    no-repeat padding-box;
+  border-radius: 16px;
+  padding-right: 40px;
+  padding-left: 40px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo {
+  height: 36px;
+}
+
+.nav-user {
+  text-decoration: none;
+}
+
+.nav-user-img {
+  width: 32px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.rounded-corner {
+  border-radius: 16px;
+}
+
+.footer {
+  background-color: #ffffff;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  padding-left: 40px;
+  padding-right: 40px;
+  margin-bottom: 24px;
+}
+
+.main-wrapper {
+  background-color: #ffffff;
+  border-radius: 16px;
+}
+
+.hero {
+  background-color: #ffffff;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  padding: 40px;
+}
+
+.category-bar {
+  padding: 12px 40px 0px;
+  background-color: #e5f3ff;
+}
+
+.overlapping-div--blue {
+  background-color: #364fbe;
+}
+
+.overlapping-div--blue .overlapping-div__rounded {
+  background-color: #e5f3ff;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  height: 15px;
+}
+
+.overlapping-div--red {
+  background-color: #c3293f;
+}
+
+.overlapping-div--red .overlapping-div__rounded {
+  background-color: #364fbe;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  height: 15px;
+}
+
+.overlapping-div--white {
+  background-color: #ffffff;
+}
+
+.overlapping-div--white .overlapping-div__rounded {
+  background-color: #c3293f;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  height: 15px;
+}
+
+.found-items {
+  background-color: #364fbe;
+  color: #ffffff;
+  padding: 40px;
+}
+
+.found-items__headline a {
+  color: #ffffff;
+}
+
+.found-items__headline a:hover {
+  color: #cccccc;
+}
+
+.found-items__card h5 {
+  color: #364fbe !important;
+}
+
+.found-items__card {
+  color: #4b4f62;
+  border-radius: 8px !important;
+  overflow: hidden;
+  margin-top: 24px;
+}
+
+.card-image {
+  height: 190px;
+  background-size: cover;
+  background-position: center center;
+  border-radius: 0;
+}
+
+.lost-items {
+  background-color: #c3293f;
+  color: #ffffff;
+  padding: 40px;
+}
+
+.lost-items__headline a {
+  color: #ffffff;
+}
+
+.lost-items__headline a:hover {
+  color: #cccccc;
+}
+
+.lost-items__card h5 {
+  color: #c3293f !important;
+}
+
+.lost-items__card {
+  color: #4b4f62;
+  border-radius: 8px !important;
+  overflow: hidden;
+  margin-top: 24px;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+}
+
+.items-content {
+  padding: 40px;
+  background-color: #ffffff;
+}
+
+.items-content img {
+  border-radius: 8px;
+}
+
+.items-content h5 {
+  font-size: 16px;
+  text-transform: uppercase;
+  color: #364fbe;
+}
+
+.item-image {
+  width: 248px;
+}
+
+/* Login */
+
+.login {
+  background-color: #ffffff;
+  overflow: hidden;
+  max-width: 800px;
+  margin: auto auto;
+}
+
+.login .login-left {
+  background: transparent linear-gradient(0deg, #a42d65 0%, #3650bf 100%) 0% 0%
+    no-repeat padding-box;
+  padding: 40px;
+}
+
+.login .login-right {
+  padding: 40px;
+}
+
+/* Accounts */
+
+.nav-account a {
+  color: #ffffff;
+  padding: 16px 16px;
+}
+
+.nav-account a.active {
+  border-bottom: solid #c3293f 4px;
+  padding: 14px 16px;
+}
+
+.nav-account a:hover {
+  color: #cccccc;
+}
+
+/* Media Queries */
+
+@media (max-width: 480px) {
+  nav.navbar {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .hero,
+  .found-items,
+  .lost-items,
+  .footer,
+  .items-content {
+    padding: 24px;
+  }
+
+  .category-bar {
+    padding: 12px 24px 0;
+  }
+
+  .category-bar .navbar {
+    padding: 0;
+  }
+
+  .item-image {
+    width: 100%;
+  }
+
+  .category-cover {
+    background-position: 600px !important;
+    padding: 24px !important;
+  }
+
+  .footer-logo {
+    display: none;
+  }
+}

@@ -1,0 +1,79 @@
+extends base
+
+block append head 
+    meta(property="og:url", content=`https://lostandfound.ph`)
+    meta(property="og:type", content="website")
+    meta(property="og:title", content=`Lost and Found PH`)
+    meta(property="og:description", content="Building honest culture one platform at a time")
+    meta(property="og:image", content="https://lostandfound.ph/img/facebook-preview.jpg")
+
+block content
+    .hero.her-main
+        h1.mb-4 Building honest culture one platform at a time.
+        .d-flex.justify-content-between
+        a.btn.btn-primary.btn-lg.me-3(href="/report/found") I found something
+        a.btn.btn-danger.btn-lg.me-3.mt-3.mt-md-0(href="/report/lost") I lost something
+    .category-bar
+        nav.navbar.navbar-expand-lg
+            .container-fluid.px-0
+                a.navbar-brand Category
+                button.navbar-toggler(type="button", data-bs-toggle="collapse", data-bs-target="#categoryNavBar", aria-controls="categoryNavBar", aria-expanded="false", aria-label="Toggle navigation")
+                    span.navbar-toggler-icon
+                        svg(xmlns="http://www.w3.org/2000/svg", fill="none", viewBox="0 0 24 24", stroke="currentColor")
+                            path(stroke-linecap="round", stroke-linejoin="round", stroke-width="2", d="M4 6h16M4 12h16M4 18h16")
+                .navbar-collapse.collapse#categoryNavBar
+                    ul.navbar-nav
+                        li.nav-item
+                            a.nav-link.btn.btn-outline-primary.btn-sm.px-4(href="/pets") Pets
+    .overlapping-div.overlapping-div--blue
+        .overlapping-div__rounded
+
+    .found-items
+        div.found-items__headline.d-flex.justify-content-between
+            h5 FOUND ITEMS
+            a(href="/view/found") View all
+        .found-items__container.row.d-flex.flex-row
+            each item in foundItems.slice(0, 4)
+                .col-md-3
+                    .card.found-items__card
+                        .card-image(style=`background-image: url('${item.images[0] ? item.images[0] : '/img/items/default-item.jpg'}');`)
+                        .card-body
+                            a(href=`/item/${item.slug}`, style="text-decoration:none;")
+                                h5.card-title= item.name
+                            p.card-text.d-flex.flex-row.align-items-center.mb-1
+                                img.icon.icon-pin(src="/img/icons/icon-pin.svg")
+                                span #{item.city}, #{item.province}
+                            p.card-text.d-flex.flex-row.align-items-center.mb-1
+                                img.icon.icon-date(src="/img/icons/icon-date.svg")
+                                span= item.date.toLocaleString('en-us', {month: 'long', day: 'numeric', year: 'numeric'})
+
+    .overlapping-div.overlapping-div--red
+        .overlapping-div__rounded
+
+    .lost-items
+        div.lost-items__headline.d-flex.justify-content-between
+            h5 LOST ITEMS
+            a(href="/view/lost") View all
+        .lost-items__container.row.d-flex.flex-row
+            each item in lostItems.slice(0, 4)
+                .col-md-3
+                    .card.lost-items__card
+                        .card-image(style=`background-image: url('${item.images[0] ? item.images[0] : '/img/items/default-item.jpg'}');`)
+                        .card-body
+                            a(href=`/item/${item.slug}`, style="text-decoration:none;")
+                                h5.card-title= item.name
+                            p.card-text.d-flex.flex-row.align-items-center.mb-1
+                                img.icon.icon-pin(src="/img/icons/icon-pin.svg")
+                                span #{item.city}, #{item.province}
+                            p.card-text.d-flex.flex-row.align-items-center.mb-1
+                                img.icon.icon-date(src="/img/icons/icon-date.svg")
+                                span= item.date.toLocaleString('en-us', {month: 'long', day: 'numeric', year: 'numeric', hour: 'numeric'})
+                            p.card-text.d-flex.flex-row.align-items-center.mb-1
+                                img.icon.icon-gift(src="/img/icons/icon-gift.svg")
+                                if (item.reward || !(item.reward === 0)) 
+                                    span= item.reward.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + ' ' + 'PHP'
+                                else
+                                    span No reward
+
+    .overlapping-div.overlapping-div--white
+        .overlapping-div__rounded

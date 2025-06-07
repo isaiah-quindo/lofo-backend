@@ -1,0 +1,13 @@
+header.header.container.my-3
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light.main-navbar
+            a.navbar-brand(href="/")
+                img.logo(src="/img/logo-white.svg")
+            div
+                if user
+                    a.me-3.btn.btn-outline-light.logout-btn Logout
+                    a.nav-user(href="/account")
+                        img.nav-user-img(src=`${user.photo}`, alt=`${user.name}`)
+                        span.text-white= user.name.split(' ')[0]
+                else
+                    a.me-3.btn.btn-outline-light(href="/signup") Sign up
+                    a.btn.btn-outline-light(href="/login") Log in

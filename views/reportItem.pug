@@ -1,0 +1,99 @@
+extends base
+
+block content
+
+    .hero.py-3(class=`${itemType}-items`)
+        h3.m-0 Report #{itemType} Item
+    .items-content
+        .row
+            .col-md-9
+                if (user)
+                    form.form--report-item.needs-validation(style="max-width: 500px;")
+                        .mb-4
+                            label.form-label(for="itemName") What have you #{itemType}?
+                            input#itemName.form-control(type="text" placeholder="Enter name of item")
+                        .mb-4
+                            select#category.form-select
+                                option(selected disabled hidden value="") Choose a category
+                                option Bags
+                                option Books
+                                option Clothing
+                                option Collector Items
+                                option Documents
+                                option Electronics
+                                option Household
+                                option Jewellry
+                                option Media
+                                option Money
+                                option Musical Equipment
+                                option Personal Accessories
+                                option Pets
+                                option Sporting Goods
+                                option Tools
+                                option Toys
+                                option Transportation
+                                option Wallet                         
+                        .mb-4
+                            label.form-label(for="locationCityInput")= `Where did you ${itemType.replace('found', 'find').replace('lost', 'lose')} it?`
+                            input#locationExact.form-control.mb-4(type="text" placeholder="Type exact location/building/area")
+                            input#locationCityInput.form-control.mb-4(list="locationCity" placeholder="Type in a city")
+                            datalist#locationCity
+                                each city in cities
+                                    option(value=`${city.name}`)
+                            input#locationProvinceInput.form-control(list="locationProvince" placeholder="Type in a province")
+                            datalist#locationProvince
+                                each province in provinces
+                                    option(value=`${province.name}`)
+                        .mb-4
+                            label.form-label(for="date")= `When did you ${itemType.replace('found', 'find').replace('lost', 'lose')} it?`
+                            input#date.form-control(type="date")
+                        .mb-4(style=`${itemType === "found" ? "display: none;" : ''}`)
+                            label.form-label(for="reward") Do you want to offer a reward? (optional)
+                            .input-group
+                                span.input-group-text PHP
+                                input#reward.form-control(type="number" placeholder="0.00" value="0.00")
+                        .mb-4
+                            label.form-label(for="images") Upload images (3 max)
+                            .input-group.mb-4
+                                input#images1.form-control(type="file")
+                            .input-group.mb-4
+                                input#images2.form-control(type="file")
+                            .input-group 
+                                input#images3.form-control(type="file")
+                        .mb-4
+                            label.form-label(for="description") Item description
+                            textarea#description.form-control(placeholder=`Describe the item you ${itemType}`)
+                        .mb-4
+                            label.form-label(for="contact") Where can people reach you?
+                            .row
+                                .col-md-4
+                                    select#contactType.form-select
+                                        option(selected disabled hidden value="") Choose...
+                                        option Phone
+                                        option Email
+                                        option Facebook
+                                        option Twitter
+                                        option Other
+                                .col-md-8
+                                    input#contact.form-control(type="text")
+                        .mb-4(style="display:none;")
+                            input#user.form-control(type="text" value=`${user.id}`)
+                        .mb-4(style="display:none;")
+                            input#itemType.form-control(type="text" value=`${itemType}`)
+                        .mb-4
+                            button.btn.btn-primary.btn-lg(type="submit") Submit
+                else
+                    .d-flex.flex-column.align-items-center.my-5
+                        h1 You are not logged in
+                        h4.text-center Please login to report a lost or found item
+                        a.btn.btn-primary.btn-lg.px-5.my-4(href="/login") Log in
+
+
+            .col-md-3
+                script(async, src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js")
+                ins(class="adsbygoogle", style="display:block", data-ad-client="ca-pub-9286752802654749", data-ad-slot="6887532279", data-ad-format="auto", data-full-width-responsive="true")
+                script. 
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+    
+    //- script.
+    //-     boostrapValidate('#itemName', 'min:5:Enter at least 5 characters.')
