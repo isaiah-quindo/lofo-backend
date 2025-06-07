@@ -9,11 +9,14 @@ const factory = require('./handlerFactory');
 
 dotenv.config({ path: './config.env' });
 
-const s3 = new AWS.S3({
+// Configure AWS
+AWS.config.update({
   accessKeyId: process.env.BUCKETEER_AWS_ACCESS_KEY_ID,
   secretAccessKey: process.env.BUCKETEER_AWS_SECRET_ACCESS_KEY,
-  region: 'ap-southeast-2',
+  region: process.env.BUCKETEER_AWS_REGION || 'ap-southeast-2',
 });
+
+const s3 = new AWS.S3();
 
 const multerFilter = (req, file, cb) => {
   if (file.mimetype.startsWith('image')) {
